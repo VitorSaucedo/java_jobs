@@ -1,4 +1,5 @@
 FROM maven:3.9-eclipse-temurin-21 AS build
+ENV MAVEN_OPTS="-Dfile.encoding=UTF-8"
 COPY . .
 RUN mvn clean package -DskipTests
 
