@@ -1,0 +1,12 @@
+spring.application.name=buscadorjava
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/SUA_DATABASE
+spring.datasource.username=SEU_USUARIO
+spring.datasource.password=SUA_SENHA
+spring.jpa.hibernate.ddl-auto=update
+
+adzuna.api.base-url=https://api.adzuna.com/v1/api
+adzuna.api.id=INSIRA_SEU_ID_AQUI
+adzuna.api.key=INSIRA_SUA_KEY_AQUI
+
+spring.threads.virtual.enabled=true

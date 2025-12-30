@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaJobs - Buscador de Vagas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>☕ Java<span>Jobs</span></h1>
+        <p>Encontre sua próxima oportunidade Java no Brasil ou Remota</p>
+
+        <div class="sync-controls">
+            <button id="fetchBtn" class="btn-primary">Verificando banco...</button>
+            <p id="db-status" class="status-text">Conectando ao banco local...</p>
+            <p id="sync-notice" class="sync-notice hidden"></p>
+        </div>
+    </div>
+</header>
+
+<section class="container filters-section">
+    <div class="filter-group">
+        <input type="text" id="searchInput" placeholder="Buscar por título, empresa ou tecnologia...">
+    </div>
+
+    <div class="filter-controls">
+        <select id="countryFilter">
+            <option value="all">Todos os Países</option>
+            <option value="br">Brasil 🇧🇷</option>
+            <option value="us">EUA 🇺🇸</option>
+            <option value="gb">Reino Unido 🇬🇧</option>
+            <option value="ca">Canadá 🇨🇦</option>
+            <option value="de">Alemanha 🇩🇪</option>
+            <option value="in">Índia 🇮🇳</option>
+        </select>
+
+        <select id="typeFilter">
+            <option value="all">Todos os Regimes</option>
+            <option value="REMOTE">🏠 Apenas Remoto</option>
+            <option value="ON_SITE">🏢 Apenas Presencial</option>
+        </select>
+    </div>
+</section>
+
+<main class="container">
+    <div id="loading" class="hidden">Sincronizando com Adzuna API (Aguarde)...</div>
+    <div id="error-message" class="hidden"></div>
+    <section id="jobs-container" class="job-grid"></section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
