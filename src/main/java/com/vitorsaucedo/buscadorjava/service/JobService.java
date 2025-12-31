@@ -12,6 +12,7 @@ import com.vitorsaucedo.buscadorjava.repository.JobListingRepository;
 import com.vitorsaucedo.buscadorjava.repository.SyncMetadataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,10 +72,12 @@ public class JobService {
         return getDashboardData();
     }
 
+    @Scheduled(cron = "0 0 3 * * *")
     @Transactional
-    public void clearDatabase() {
-        repository.deleteAll();
-        syncRepository.deleteAll();
+    public void performDatabaseMaintenance() {
+        LocalDateTime oneMonthAgo = LocalDateTime.now().minusMonths(1);
+        repository.deleteByCreatedAtBefore(oneMonthAgo);
+        System.out.println("Manutenção concluída: Vagas com mais de 1 mês removidas.");
     }
 
     private void processResponse(List<JobDTO> results, String country) {
